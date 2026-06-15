@@ -1,0 +1,19 @@
+name: nephele
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - numpy>=1.23
+  - gdal>=3.4
+  - cmake>=3.18
+  - cxx-compiler
+  - pybind11>=2.11
+  - scikit-build-core>=0.8
+  - fastapi>=0.110
+  - uvicorn>=0.27
+  - pydantic>=2.0
+  - pyyaml>=6.0
+  - pytest>=7.0
+  - pytest-cov>=4.0
+  - mypy>=1.8
+  - ruff>=0.3

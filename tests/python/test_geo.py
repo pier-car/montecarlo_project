@@ -1,7 +1,6 @@
 import json
 from pathlib import Path
 
-import numpy as np
 import pytest
 
 from nephele.geo.canopy import load_building_footprints

@@ -115,7 +115,7 @@ class ReferenceDispersionEngine:
         dims: tuple[int, int, int],
     ) -> np.ndarray:
         """Bin particle mass into a regular grid, returning concentration."""
-        origin = np.asarray(origin, dtype=float)
+        origin_arr = np.asarray(origin, dtype=float)
         cell = np.asarray(cell_size, dtype=float)
         dims_arr = np.asarray(dims, dtype=int)
         if np.any(cell <= 0.0):
@@ -123,7 +123,7 @@ class ReferenceDispersionEngine:
         if np.any(dims_arr <= 0):
             raise ValueError("dims must be > 0")
 
-        idx = np.floor((self._pos - origin) / cell).astype(int)
+        idx = np.floor((self._pos - origin_arr) / cell).astype(int)
         inside = np.all((idx >= 0) & (idx < dims_arr), axis=1)
         idx = idx[inside]
         mass = self._mass[inside]

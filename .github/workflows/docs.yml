@@ -1,0 +1,32 @@
+name: Docs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Validate documentation links and structure
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          required = [
+              "README.md",
+              "docs/theory.md",
+              "docs/architecture.md",
+              "docs/validation.md",
+          ]
+          missing = [p for p in required if not Path(p).exists()]
+          if missing:
+              raise SystemExit(f"Missing documentation files: {missing}")
+          print("All required documentation files present.")
+          PY
