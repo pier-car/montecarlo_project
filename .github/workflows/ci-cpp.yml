@@ -1,0 +1,59 @@
+name: CI (C++)
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        build_type: [Release, Debug]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake g++ libgtest-dev libomp-dev
+
+      - name: Configure
+        run: >
+          cmake -S . -B build
+          -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+          -DNEPHELE_USE_OPENMP=ON
+          -DNEPHELE_BUILD_TESTS=ON
+
+      - name: Build
+        run: cmake --build build -j
+
+      - name: Test
+        run: ctest --test-dir build --output-on-failure
+
+  sanitizers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake g++ libgtest-dev libomp-dev
+
+      - name: Configure with ASan/UBSan
+        run: >
+          cmake -S . -B build-asan
+          -DCMAKE_BUILD_TYPE=Debug
+          -DNEPHELE_USE_OPENMP=OFF
+          -DCMAKE_CXX_FLAGS="-fsanitize=address,undefined -fno-omit-frame-pointer"
+
+      - name: Build
+        run: cmake --build build-asan -j
+
+      - name: Test
+        run: ctest --test-dir build-asan --output-on-failure

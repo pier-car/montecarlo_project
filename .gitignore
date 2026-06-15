@@ -1,0 +1,13 @@
+build/
+*.o
+__pycache__/
+*.so
+*.pyc
+.pytest_cache/
+dist/
+*.egg-info/
+_skbuild/
+.mypy_cache/
+.ruff_cache/
+data/demo/*.tif
+benchmarks/results/*.json

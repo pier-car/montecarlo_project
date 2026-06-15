@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use NEPHELE in your research, please cite it as below."
+title: "NEPHELE: Networked Ensemble Plume-Hazard Estimation & Lagrangian Engine"
+abstract: >-
+  Real-time Lagrangian stochastic CBRN dispersion modelling in urban canopies,
+  with online data assimilation (Ensemble Kalman / particle filtering) and
+  information-optimal sensor-network placement.
+type: software
+version: 0.1.0
+license: Apache-2.0
+repository-code: "https://github.com/pier-car/montecarlo_project"
+keywords:
+  - CBRN
+  - atmospheric dispersion
+  - Lagrangian stochastic model
+  - Monte Carlo
+  - data assimilation
+  - ensemble Kalman filter
+  - submodular optimization
+  - sensor placement
+authors:
+  - name: "NEPHELE contributors"

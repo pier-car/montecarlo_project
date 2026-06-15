@@ -1,0 +1,31 @@
+{
+  "type": "FeatureCollection",
+  "name": "nephele_demo_block",
+  "crs": { "type": "name", "properties": { "name": "local-enu-metres" } },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "height": 24.0, "name": "block_n" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[20, 20], [60, 20], [60, 60], [20, 60], [20, 20]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "height": 18.0, "name": "block_e" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[80, -10], [120, -10], [120, 40], [80, 40], [80, -10]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "height": 30.0, "name": "block_s" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[-40, -60], [10, -60], [10, -20], [-40, -20], [-40, -60]]]
+      }
+    }
+  ]
+}

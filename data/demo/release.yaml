@@ -1,0 +1,13 @@
+# NEPHELE demo release scenario: a notional point release in a city block.
+# Coordinates are in metres in a local ENU frame centred on the release.
+
+source_pos: [0.0, 0.0, 2.0]   # x, y, z [m]
+source_mass: 5.0              # released mass / activity [arbitrary units]
+decay_rate: 0.0               # agent decay/deposition rate [1/s]
+
+wind_speed: 3.5               # 10 m reference wind speed [m/s]
+wind_dir_deg: 250.0           # direction wind comes FROM [deg]
+stability: "D"                # Pasquill-Gifford stability class (A-F)
+
+num_particles: 50000
+dt: 0.5                       # integration step [s]
